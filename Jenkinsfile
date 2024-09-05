@@ -11,7 +11,8 @@ pipeline {
     }
 
     triggers {
-        githubPush()
+        // Commented out since GitHub webhook is not used
+        // githubPush()
     }
 
     stages {

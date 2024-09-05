@@ -10,15 +10,15 @@ pipeline {
         NEXUS_REPOSITORY = 'http://localhost:8081/repository/nexus-repo-ashu/'
     }
 
-    triggers {
-        // Commented out since GitHub webhook is not used
-        // githubPush()
-    }
+    // triggers {
+    //     // Commented out since GitHub webhook is not used
+    //     // githubPush()
+    // }
 
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/lawda-maxed-out/yash_gand_maare.git'
             }
         }
 

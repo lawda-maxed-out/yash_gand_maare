@@ -14,7 +14,9 @@ pipeline {
     //     // Commented out since GitHub webhook is not used
     //     // githubPush()
     // }
-
+    tools {
+        maven 'Maven 3.8.7' // Use the Maven tool configured in Jenkins
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -24,7 +26,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                dir('maven-app/my-app') {
+                    sh 'mvn clean package'
+                }
             }
         }
 

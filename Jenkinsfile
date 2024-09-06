@@ -14,6 +14,7 @@ pipeline {
     //     // Commented out since GitHub webhook is not used
     //     // githubPush()
     // }
+    // sqa_e6d2389b4260b9bb4d2eaddadfaa024852daf660
     tools {
         maven 'Maven 3.8.7' // Use the Maven tool configured in Jenkins
     }
@@ -34,8 +35,10 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=your-project-key -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_CREDENTIALS_ID'
+                dir('maven/my-app') {
+                    withSonarQubeEnv('SonarQube') {
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=your-project-key -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_CREDENTIALS_ID'
+                    }
                 }
             }
         }
@@ -43,23 +46,25 @@ pipeline {
         stage('Publish to Nexus') {
             steps {
                 script {
-                    def pom = readMavenPom file: 'pom.xml'
-                    def artifactId = pom.artifactId
-                    def version = pom.version
-                    def packaging = pom.packaging
-                    def file = "target/${artifactId}-${version}.${packaging}"
-                    nexusArtifactUploader(
-                        nexusVersion: 'nexus3',
-                        protocol: 'http',
-                        nexusUrl: "$NEXUS_URL",
-                        groupId: pom.groupId,
-                        version: version,
-                        repository: "$NEXUS_REPOSITORY",
-                        credentialsId: "$NEXUS_CREDENTIALS_ID",
-                        artifacts: [
-                            [artifactId: artifactId, classifier: '', file: file, type: packaging]
-                        ]
-                    )
+                    dir('maven/my-app') {
+                        def pom = readMavenPom file: 'pom.xml'
+                        def artifactId = pom.artifactId
+                        def version = pom.version
+                        def packaging = pom.packaging
+                        def file = "target/${artifactId}-${version}.${packaging}"
+                        nexusArtifactUploader(
+                            nexusVersion: 'nexus3',
+                            protocol: 'http',
+                            nexusUrl: "$NEXUS_URL",
+                            groupId: pom.groupId,
+                            version: version,
+                            repository: "$NEXUS_REPOSITORY",
+                            credentialsId: "$NEXUS_CREDENTIALS_ID",
+                            artifacts: [
+                                [artifactId: artifactId, classifier: '', file: file, type: packaging]
+                            ]
+                        )
+                    }
                 }
             }
         }

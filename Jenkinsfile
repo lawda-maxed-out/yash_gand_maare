@@ -7,7 +7,7 @@ pipeline {
         SONARQUBE_CREDENTIALS_ID = 'SonarQube'
         SONARQUBE_URL = 'http://10.1.27.202:9000/'
         NEXUS_URL = 'http://10.1.27.202:8081/'
-        NEXUS_REPOSITORY = 'http://10.1.27.202:8081/repository/nexus-repo-ashu/'
+        NEXUS_REPOSITORY = 'nexus-repo-ashu'
         SONARQUBE_TOKEN = 'squ_a792250b2379b83fbae3814afdcaabd4f3a24517'
     }
 

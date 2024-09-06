@@ -8,6 +8,7 @@ pipeline {
         SONARQUBE_URL = 'http://10.1.27.202:9000/'
         NEXUS_URL = 'http://10.1.27.202:8081/'
         NEXUS_REPOSITORY = 'http://10.1.27.202:8081/repository/nexus-repo-ashu/'
+        SONARQUBE_TOKEN = 'squ_a792250b2379b83fbae3814afdcaabd4f3a24517'
     }
 
     triggers {
@@ -38,7 +39,7 @@ pipeline {
             steps {
                 dir('maven-app/my-app') {
                     withSonarQubeEnv('SonarQube') {
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=your-project-key -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_CREDENTIALS_ID'
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=your-project-key -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_TOKEN'
                     }
                 }
             }

@@ -35,7 +35,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                dir('maven/my-app') {
+                dir('maven-app/my-app') {
                     withSonarQubeEnv('SonarQube') {
                         sh 'mvn sonar:sonar -Dsonar.projectKey=your-project-key -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONARQUBE_CREDENTIALS_ID'
                     }
@@ -46,7 +46,7 @@ pipeline {
         stage('Publish to Nexus') {
             steps {
                 script {
-                    dir('maven/my-app') {
+                    dir('maven-app/my-app') {
                         def pom = readMavenPom file: 'pom.xml'
                         def artifactId = pom.artifactId
                         def version = pom.version

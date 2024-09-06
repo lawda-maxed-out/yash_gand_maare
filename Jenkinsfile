@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = 'docker-credentials'
         NEXUS_CREDENTIALS_ID = 'nexus'
-        SONARQUBE_CREDENTIALS_ID = 'sonar'
+        SONARQUBE_CREDENTIALS_ID = 'SonarQube'
         SONARQUBE_URL = 'http://localhost:9000/'
         NEXUS_URL = 'http://localhost:8081/'
         NEXUS_REPOSITORY = 'http://localhost:8081/repository/nexus-repo-ashu/'
@@ -15,6 +15,7 @@ pipeline {
     //     // githubPush()
     // }
     // sqa_e6d2389b4260b9bb4d2eaddadfaa024852daf660
+    // sonar-user: squ_a792250b2379b83fbae3814afdcaabd4f3a24517
     tools {
         maven 'Maven 3.8.7' // Use the Maven tool configured in Jenkins
     }

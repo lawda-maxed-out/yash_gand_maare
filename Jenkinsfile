@@ -5,15 +5,15 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'docker-credentials'
         NEXUS_CREDENTIALS_ID = 'nexus'
         SONARQUBE_CREDENTIALS_ID = 'SonarQube'
-        SONARQUBE_URL = 'http://localhost:9000/'
-        NEXUS_URL = 'http://localhost:8081/'
-        NEXUS_REPOSITORY = 'http://localhost:8081/repository/nexus-repo-ashu/'
+        SONARQUBE_URL = 'http://10.1.27.202:9000/'
+        NEXUS_URL = 'http://10.1.27.202:8081/'
+        NEXUS_REPOSITORY = 'http://10.1.27.202:8081/repository/nexus-repo-ashu/'
     }
 
-    // triggers {
-    //     // Commented out since GitHub webhook is not used
-    //     // githubPush()
-    // }
+    triggers {
+        // Commented out since GitHub webhook is not used
+        githubPush()
+    }
     // sqa_e6d2389b4260b9bb4d2eaddadfaa024852daf660
     // sonar-user: squ_a792250b2379b83fbae3814afdcaabd4f3a24517
     tools {

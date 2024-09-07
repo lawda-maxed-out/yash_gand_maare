@@ -6,7 +6,7 @@ pipeline {
         NEXUS_CREDENTIALS_ID = 'nexus'
         SONARQUBE_CREDENTIALS_ID = 'SonarQube'
         SONARQUBE_URL = 'http://10.1.27.202:9000/'
-        NEXUS_URL = 'http://10.1.27.202:8081/'
+        NEXUS_URL = 'http://10.1.27.202:8081'
         NEXUS_REPOSITORY = 'nexus-repo-ashu'
         SONARQUBE_TOKEN = 'squ_a792250b2379b83fbae3814afdcaabd4f3a24517'
     }
@@ -17,6 +17,8 @@ pipeline {
     }
     // sqa_e6d2389b4260b9bb4d2eaddadfaa024852daf660
     // sonar-user: squ_a792250b2379b83fbae3814afdcaabd4f3a24517
+    // 22f1a9d4-13ba-36c7-97f8-b41b4835c960
+    // nuget setapikey 22f1a9d4-13ba-36c7-97f8-b41b4835c960 -source http://10.1.27.202:8081/repository/{repository name}/
     tools {
         maven 'Maven 3.8.7' // Use the Maven tool configured in Jenkins
     }

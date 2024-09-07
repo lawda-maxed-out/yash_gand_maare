@@ -84,7 +84,7 @@ pipeline {
     post {
         always {
             emailext(
-                to: 'pandaashutosh350@gmail.com',
+                to: 'zephyr340cicd@gmail.com', // @Zephyr_340_cicd
                 subject: "Jenkins Build ${currentBuild.fullDisplayName}",
                 body: "Build ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}"
             )

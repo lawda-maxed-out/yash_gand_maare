@@ -77,7 +77,6 @@ pipeline {
                 sh 'mvn -version'
                 sh 'echo $NEXUS_URL'
                 sh 'echo $NEXUS_REPOSITORY'
-                sh 'cat /path/to/your/settings.xml'
             }
         }
     }
